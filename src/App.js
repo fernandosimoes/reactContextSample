@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Form from './components/form';
+import MyContext from './context/Context';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  //declaração dos states
+  const[nome, setNome] = useState('Fernando Simoes')
+  const[email, setEmail] = useState('fernando.simoes90@hotmail.com')
+  const[idade, setIdade] = useState('31')
+
+   return (
+      <MyContext.Provider value={{nome, setNome, email, setEmail,   idade, setIdade}}>
+        Nome: {nome}
+        <br></br>
+        email: {email}
+        <br></br>
+        idade: {idade}
+        <br></br>
+        <Form></Form>
+      </MyContext.Provider>
+    )
 }
 
 export default App;
